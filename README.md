@@ -25,7 +25,7 @@ pwr
 
 ### Option A - Live Demo
 
-Open the hosted app (note: free account, may be unavailable if quota is exceeded): [Launch in Posit Connect Cloud](https://todo).
+Open the hosted app (note: free account, may be unavailable if quota is exceeded): [Launch in Posit Connect Cloud](https://019a1358-9083-cdd0-9cc9-c4ccb9171663.share.connect.posit.cloud/).
 
 ### Option B - R console / RStudio
 Clone this repository and run:
