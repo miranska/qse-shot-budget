@@ -1,5 +1,9 @@
 # Quantum Shot Budget Demo
 
+[![R ≥ 4.4](https://img.shields.io/badge/R-%E2%89%A5%204.4-276DC3?logo=r&logoColor=white)](https://www.r-project.org/)
+[![Live Demo — Posit Connect](https://img.shields.io/badge/Live%20Demo-Posit%20Connect-1f6feb)](https://019a1358-9083-cdd0-9cc9-c4ccb9171663.share.connect.posit.cloud/)
+
+
 Interactive R Shiny application for exploring shot budgeting in quantum program testing.  
 This demo accompanies the [paper](https://arxiv.org/abs/2510.YYYYY) *The Cost of Certainty: Shot Budgets in Quantum Program Testing*.
 
