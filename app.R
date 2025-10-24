@@ -341,7 +341,7 @@ server <- function(input, output, session) {
       theme(legend.position = "bottom")
   })
   
-  # Program budgeting panel (Sec. 5)
+  # Program budgeting panel (Ex. 5.1)
   budget_df <- reactive({
     k <- input$k_blocks
     w_str <- gsub("[\n\t[:space:]]", "", input$weights_csv)
@@ -391,53 +391,7 @@ server <- function(input, output, session) {
       theme(legend.position = "bottom")
   })
   
-  # ---- Example 5.3 reactive dataset ----
-  # Reset CSV to default A/B/C
-  observeEvent(input$arch_reset, {
-    updateTextAreaInput(
-      session, "arch_csv",
-      value = paste(
-        "label,g1,g2,n",
-        "A,50000,10000,10",
-        "B,20000, 4000,40",
-        "C,50000,20000,50",
-        sep = "\n"
-      )
-    )
-  })
-  
-  # Parse CSV safely
-  parse_arch_csv <- function(txt) {
-    if (is.null(txt) || !nzchar(trimws(txt))) {
-      return(tibble::tibble(label = character(), g1 = numeric(), g2 = numeric(), n = integer()))
-    }
-    con <- textConnection(txt)
-    on.exit(close(con), add = TRUE)
-    df <- tryCatch(utils::read.csv(con, stringsAsFactors = FALSE, strip.white = TRUE), error = function(e) NULL)
-    if (is.null(df)) return(tibble::tibble(label = character(), g1 = numeric(), g2 = numeric(), n = integer()))
-    # Standardize columns
-    names(df) <- tolower(trimws(names(df)))
-    needed <- c("label","g1","g2","n")
-    if (!all(needed %in% names(df))) {
-      return(tibble::tibble(label = character(), g1 = numeric(), g2 = numeric(), n = integer()))
-    }
-    df$label <- as.character(df$label)
-    df$g1 <- suppressWarnings(as.numeric(df$g1))
-    df$g2 <- suppressWarnings(as.numeric(df$g2))
-    df$n  <- suppressWarnings(as.integer(df$n))
-    # Drop empty/invalid rows
-    df <- df |>
-      dplyr::filter(!is.na(label) & nzchar(trimws(label))) |>
-      dplyr::mutate(
-        g1 = ifelse(is.finite(g1) & g1 >= 0, g1, NA_real_),
-        g2 = ifelse(is.finite(g2) & g2 >= 0, g2, NA_real_),
-        n  = ifelse(is.finite(n)  & n  >= 0, n, NA_integer_)
-      ) |>
-      tidyr::drop_na(g1, g2, n)
-    df
-  }
-  
-  # ---- Example 5.3 reactive dataset (arbitrary archetypes) ----
+  # Program budgeting panel (Ex. 5.3)
   # Reset CSV to default A/B/C
   observeEvent(input$arch_reset, {
     updateTextAreaInput(
@@ -480,7 +434,6 @@ server <- function(input, output, session) {
       tidyr::drop_na(g1, g2, n)
   }
   
-  # ---- Example 5.3 reactive dataset (per-instance only) ----
   ex53_df <- reactive({
     df <- parse_arch_csv(input$arch_csv)
     validate(
@@ -508,7 +461,6 @@ server <- function(input, output, session) {
       )
   })
   
-  # Table: per-instance only
   output$ex53_table <- renderTable({
     df <- ex53_df()
     df |>
@@ -527,7 +479,6 @@ server <- function(input, output, session) {
       )
   })
   
-  # Bar chart: per-instance shots
   output$ex53_bar <- renderPlot({
     df <- ex53_df()
     ggplot2::ggplot(df, ggplot2::aes(x = label, y = N_inverse_per, fill = label)) +
