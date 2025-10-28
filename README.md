@@ -1,11 +1,12 @@
 # Quantum Shot Budget Demo
 
+[![arXiv](https://img.shields.io/badge/arXiv-2510.22418-b31b1b.svg)](https://arxiv.org/abs/2510.22418)
 [![R ≥ 4.4](https://img.shields.io/badge/R-%E2%89%A5%204.4-276DC3?logo=r&logoColor=white)](https://www.r-project.org/)
 [![Live Demo — Posit Connect](https://img.shields.io/badge/Live%20Demo-Posit%20Connect-1f6feb)](https://019a1358-9083-cdd0-9cc9-c4ccb9171663.share.connect.posit.cloud/)
 
 
 Interactive R Shiny application for exploring shot budgeting in quantum program testing.  
-This demo accompanies the [paper](https://arxiv.org/abs/2510.YYYYY) *The Cost of Certainty: Shot Budgets in Quantum Program Testing*.
+This demo accompanies the [paper](https://arxiv.org/abs/2510.22418) *The Cost of Certainty: Shot Budgets in Quantum Program Testing*.
 
 ## Overview
 
@@ -62,8 +63,8 @@ If you use or study the code, please cite it as follows.
   title={The Cost of Certainty: Shot Budgets in Quantum Program Testing},
   author={Andriy Miranskyy},
   year={2025},
-  journal={arXiv preprint arXiv:2510.YYYYY},
-  doi={XXX}
+  journal={arXiv preprint arXiv:2510.22418},
+  doi={10.48550/arXiv.2510.22418}
 }
 ```
 

@@ -120,7 +120,7 @@ ui <- navbarPage(
             "and allocate program-level fidelity budgets across functions using the Bures angle."),
           p(em(
               "For details please see the ",
-              a("paper", href = "https://arxiv.org/abs/250X.YYYYY", target = "_blank"),
+              a("paper", href = "https://arxiv.org/abs/2510.22418", target = "_blank"),
               "."
           ))
         ),
